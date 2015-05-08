@@ -1,0 +1,20 @@
+{
+  'Page':{
+    'name' : "MainPage",
+    'title' : "Main Page",
+    'stack' :
+    [
+      {
+        'type': 'label', 'mode' : 'overlay'
+      },
+      {
+        'type': 'image', 'src' : "http://upload.wikimedia.org/wikipedia/commons/e/e0/Rat_Terrier_head.jpg",
+        /* 'vstretch': 'full', 'hstretch': 'full', 'stretchType': 'aspectFill', */
+        'name' : 'image'
+      },
+      {
+        'type': 'button', 'title' : "Hit Me"
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <!-- Force fixed with with no zooming -->
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <title>SpeedRedd - lube up your reddit experience</title>
+  <!--
+  <link rel="shortcut icon" href="http://speckycdn.sdm.netdna-cdn.com/wp-content/themes/speckyboy_responsive_v0.7/favicon.ico">
+  <link rel="icon" href="http://speckycdn.sdm.netdna-cdn.com/wp-content/themes/speckyboy_responsive_v0.7/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  
+  <script type="text/javascript" src="js/redditjson.js"></script>-->
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <script type="text/javascript" src="js/redditjson.js"></script>
+<script type="text/javascript" src="js/hammer.js"></script>
+</head>
+
+<body>
+<!--
+  <div id="w">
+    <!-- logo http://dribbble.com/shots/1177942-Reddit-Logo ->
+    <div id="logo">
+      <h1>Reddit API Domain Search</h1>
+    </div>
+    
+    <p>Enter a domain without <code>http://www.</code> to browse recent submissions in Reddit.</p>
+    
+    <div id="searchfield">
+      <form id="domainform" name="domainform">
+        <input type="text" class="search" id="s" name="s" placeholder="ex: youtube.com">
+      </form>
+    </div>
+    -->
+    <form onsubmit="return list_subreddit()">
+        <div id="content">
+            <div id="header">
+                Enter Subreddit name (without /r/):
+                <br/>
+                    <input name="subreddit" id="subreddit"/>
+            </div>
+            <div id="itemview">
+            </div>
+            <div id="footer">
+                <input style="display:none;"  name="showmore" id="showmore" type="submit" value="Show More" />
+            </div>
+        </div>
+    </form>
+  </div>
+<script type="text/javascript"></script>
+</body>
+</html>

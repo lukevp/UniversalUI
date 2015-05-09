@@ -17,14 +17,22 @@ function InitUUI()
     resizeCanvas();
 
     drawStuff(); /* start animation loop */
+
+
+    var hammertime = new Hammer(canvas);
+    hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+    hammertime.on('swipeleft', function(ev) {
+        console.log(ev);
+        console.log("SWIPED LEFT");
+        dogImg=personImg;
+    });
 }
 
 
 function resizeCanvas() {
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    drawStuff();
+    //drawStuff();
     /*
     if (resizeTimerID != 0) {
         clearTimeout(resizeTimerID);
@@ -56,28 +64,30 @@ function drawScaledImageToCanvas(img) {
     canvas_height = canvas.height;
     image_width = img.width;
     image_height = img.height;
-    xScaleFactor = canvas_width / image_width;
-    yScaleFactor = canvas_height / image_height;
-    if (canvas_width < canvas_height)
-    {
-        draw_width = image_width * xScaleFactor;
-        draw_height = image_height * yScaleFactor;
-        
-        //draw_width = image_width * (canvas_height / image_height);
-        // do a height-constrained resize.
+
+    draw_width = image_width;
+    draw_height = image_height;
+
+    if(image_width > canvas_width){
+        ratio = canvas_width / image_width;   // get ratio for scaling image
+        draw_width = canvas_width; // Set new width
+        draw_height = image_height * ratio;  // Scale height based on ratio
+        image_height = image_height * ratio;    // Reset height to match scaled image
+        image_width = image_width * ratio;    // Reset width to match scaled image
     }
-    else
-        {
-            draw_width = 100;
-            draw_height = 100;
-        }
-//else
-    //{
-        // do a height-constrained resize.
-    //    draw_width = canvas_width;
-//    draw_height = image_height * (canvas_width / image_width);
-//    }
-    context.drawImage(img, 0, 0, draw_width, draw_height);
+
+    // Check if current height is larger than max
+    if(image_height > canvas_height){
+        ratio = canvas_height / image_height; // get ratio for scaling image
+        draw_height = canvas_height;   // Set new height
+        draw_width = image_width * ratio;    // Scale width based on ratio
+        image_width = image_width * ratio;    // Reset width to match scaled image
+        image_height = image_height * ratio;    // Reset height to match scaled image
+    }
+
+    xoffset = (canvas_width  / 2 ) - ( image_width / 2);
+    yoffset = (canvas_height / 2 ) - (image_height / 2)
+    context.drawImage(img, xoffset, 0, draw_width, draw_height);
 }
 
 function drawText(text) {
